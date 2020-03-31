@@ -1,0 +1,62 @@
+<style>
+  .zdog-canvas {
+    background: #4D97EC;
+  }
+</style>
+<body onkeydown="moveCamera(event);">
+<canvas class="zdog-canvas" width="1000" height="600"></canvas>
+</body>
+<script src="https://unpkg.com/zdog@1/dist/zdog.dist.js"></script>
+<script src="perlin.js"></script>
+<script src="index.js"></script>
+<script>
+  illo.scale=1;
+
+
+
+  illo.updateRenderGraph();
+
+
+function moveCamera(e){
+  console.log(e.keyCode);
+  if(e.keyCode==38){//Up
+    //islandBase.scale+=.1;
+      islandBase.translate.y-=1;
+  }
+  if(e.keyCode==40){//Down
+    //islandBase.scale-=.1;
+      islandBase.translate.y+=1;
+  }
+
+  if(e.keyCode==39){//Right
+    islandBase.translate.x-=2;
+  }
+  if(e.keyCode==37){//Left
+    islandBase.translate.x+=2;
+  }
+
+
+  if(e.keyCode==87){//Pan up
+    islandBase.rotate.x-=.01;
+  }
+  if(e.keyCode==83){//Pan up
+    islandBase.rotate.x+=.01;
+  }
+
+  if(e.keyCode==65){//Pan Left
+    islandBase.rotate.z-=.01;
+  }
+  if(e.keyCode==68){//Pan Right
+    islandBase.rotate.z+=.01;
+  }
+
+  if(e.keyCode==69){//Zoom In
+    illo.scale+=.1;
+  }
+  if(e.keyCode==81){//Zoom Out
+    illo.scale-=.1;
+  }
+
+  illo.updateRenderGraph();
+}
+</script>
